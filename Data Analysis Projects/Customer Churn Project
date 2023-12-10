@@ -1,0 +1,45 @@
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Load the dataset (assuming you have a dataset in a CSV file)
+# Replace 'your_dataset.csv' with the actual file name and path
+df = pd.read_csv('your_dataset.csv')
+
+# Assuming 'Churn' is the target variable, and other columns are features
+# Replace 'Churn' and other column names based on your dataset
+X = df.drop('Churn', axis=1)
+y = df['Churn']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize the logistic regression model
+model = LogisticRegression()
+
+# Fit the model on the training data
+model.fit(X_train, y_train)
+
+# Make predictions on the test data
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+classification_rep = classification_report(y_test, y_pred)
+
+# Print the results
+print(f"Accuracy: {accuracy * 100:.2f}%")
+print("\nConfusion Matrix:")
+print(conf_matrix)
+print("\nClassification Report:")
+print(classification_rep)
+
+# Assuming you have a 10% reduction in churn rate
+original_churn_rate = y.mean()
+new_churn_rate = original_churn_rate - (original_churn_rate * 0.10)
+
+print(f"\nOriginal Churn Rate: {original_churn_rate * 100:.2f}%")
+print(f"New Churn Rate (with 10% reduction): {new_churn_rate * 100:.2f}%")
