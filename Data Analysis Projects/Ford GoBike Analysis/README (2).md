@@ -16,6 +16,4 @@ From the data exploration, I observed that a the quantitative variables in the d
 
 ## Key Insights for Presentation
 
-> Select one or two main threads from your exploration to polish up for your presentation. Note any changes in design from your exploration step here.
-
 For the presentation, I focus on just the influence of `distance_in_Km` on `duration_min`. I start by introducing the `duration_min` variable, followed by the distribution of `duration_min` variable, distribution of `distance_in_km` variable and finally plot scatterplot to display the positive relationship between them.   
